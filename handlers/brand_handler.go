@@ -16,6 +16,7 @@ type CreateBrandRequest struct {
 	Name        string `json:"name" binding:"required"`
 	Description string `json:"description"`
 	LogoURL     string `json:"logo_url"`
+	IsActive    bool   `json:"is_active"`
 }
 
 // CreateBrand creates a new brand
@@ -36,6 +37,7 @@ func CreateBrand(c *gin.Context) {
 		Name:        req.Name,
 		Description: req.Description,
 		LogoURL:     req.LogoURL,
+		IsActive:    req.IsActive,
 	}
 
 	if err := database.GetDB().Create(&brand).Error; err != nil {
